@@ -27,20 +27,32 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
+        
+        return 63
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        <#code#>
+        
+        return 1
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        
+        return tableViewContentsArray.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let cellLabel = cell.contentView.viewWithTag(1) as! UILabel
+        
+        cellLabel.text = tableViewContentsArray[indexPath.row]
+        
+        return cell
     }
-    
 }
 
