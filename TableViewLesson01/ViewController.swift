@@ -50,6 +50,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        
         let cellLabel = cell.contentView.viewWithTag(1) as! UILabel
         
         cellLabel.text = tableViewContentsArray[indexPath.row]
@@ -61,7 +62,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.cellForRow(at: indexPath)
         
-        cell?.accessoryType = .checkmark
+        cell?.accessoryView = {() -> UIActivityIndicatorView in
+            
+            let indicatorView = UIActivityIndicatorView(frame: CGRect(x: (cell?.frame.maxX)! - ((cell?.frame.maxX)! / 4), y: (cell?.frame.minY)! , width: (cell?.frame.size.width)! / 4, height: (cell?.frame.size.height)!))
+            
+            indicatorView.color = .black
+            indicatorView.startAnimating()
+            
+            return indicatorView
+        }()
         
     }
     
@@ -69,7 +78,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.cellForRow(at: indexPath)
         
-        cell?.accessoryType = .none
+        cell?.accessoryView = {() -> UIActivityIndicatorView in
+            
+            let indicatorView = UIActivityIndicatorView()
+            
+            indicatorView.color = .black
+            indicatorView.stopAnimating()
+            
+            return indicatorView
+        }()
         
     }
 }
