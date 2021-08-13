@@ -61,7 +61,15 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.cellForRow(at: indexPath)
         
-        cell?.accessoryType = .detailButton
+        cell?.accessoryType = .checkmark
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        cell?.accessoryType = .none
         
     }
 }
