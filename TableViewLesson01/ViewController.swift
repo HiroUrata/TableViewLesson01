@@ -62,13 +62,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         let cell = tableView.cellForRow(at: indexPath)
         
+//        cell?.accessoryType = .checkmark  //☑️マーク
+//        cell?.accessoryType = .detailButton  // 丸の中にiボタン
+//        cell?.accessoryType = .detailDisclosureButton // 丸の中にiボタン + >
+//        cell?.accessoryType = .disclosureIndicator  //  >ボタン
+        
         cell?.accessoryView = {() -> UIActivityIndicatorView in
-            
+
             let indicatorView = UIActivityIndicatorView(frame: CGRect(x: (cell?.frame.maxX)! - ((cell?.frame.maxX)! / 4), y: (cell?.frame.minY)! , width: (cell?.frame.size.width)! / 4, height: (cell?.frame.size.height)!))
-            
+
             indicatorView.color = .black
             indicatorView.startAnimating()
-            
+
             return indicatorView
         }()
         
@@ -79,12 +84,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let cell = tableView.cellForRow(at: indexPath)
         
         cell?.accessoryView = {() -> UIActivityIndicatorView in
-            
+
             let indicatorView = UIActivityIndicatorView()
-            
+
             indicatorView.color = .black
             indicatorView.stopAnimating()
-            
+
             return indicatorView
         }()
         
